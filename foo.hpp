@@ -5,8 +5,26 @@
 #include <list>
 #include <vector>
 
-std::vector< char > foo(std::list< Human >& people)
+using namespace std;
+
+vector<char> foo(list<Human>& people)
 {
-    // Twoja implementacja tutaj
-    return {};
+    vector<char> wektor;
+    wektor.reserve(people.size());
+
+    for (Human& person : people) {
+        person.birthday();
+        if (person.isMonster() == true)
+        {
+            wektor.push_back('n');
+        }
+        else
+        {
+            wektor.push_back('y');
+        }
+    }
+
+    reverse(wektor.begin(), wektor.end());
+
+    return wektor;
 }
